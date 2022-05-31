@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap");
 
+$koho: "KoHo", sans-serif;
+
 $lg: 3rem;
 $md: 1.2rem;
 $sm: 1rem;
@@ -18,19 +20,19 @@ $g-md: 0.75rem;
 $g-sm: 0.5rem;
 $g-xsm: 0.3rem;
 
-$border-radius: 1000px;
+$border-radius: 10px;
 $border-width: 2px;
 
 $trans: all 0.1s ease-in-out;
 
-$muted: #0000003a;
+$muted: #00000044;
 $blue: #01ffff;
 $yellow: #ffff61;
 $pink: #ff72bb;
 
 body {
   margin: 0;
-  font-family: "KoHo", sans-serif;
+  font-family: $koho;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   * {
@@ -53,6 +55,7 @@ code {
   #{$h} {
     font-size: $s;
     font-weight: 400;
+    text-align: right;
 
     @media (max-width: 550px) {
       font-size: #{$s * 0.8};
@@ -68,6 +71,10 @@ code {
 
 a {
   color: black;
+
+  &:hover {
+    color: $muted;
+  }
 
   &.muted {
     color: $muted;
@@ -189,6 +196,10 @@ a {
         align-items: center;
         padding: $g-xsm $g-sm;
 
+        &:hover {
+          color: black;
+        }
+
         img {
           max-height: $md;
           margin: 0 $g-sm 0 0;
@@ -198,6 +209,7 @@ a {
         h3 {
           font-weight: 700;
           margin: 0 0 0.1rem;
+          white-space: nowrap;
         }
       }
     }
@@ -205,12 +217,28 @@ a {
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
   .form-section {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    h3 {
-      margin: 0;
+    margin: $g-sm 0 $g-md;
+
+    h2 {
+      margin: 0 0 $g-xsm;
+      font-weight: 700;
+    }
+
+    input {
+      font-family: $koho;
+      font-size: $sm;
+      border: $border-width solid black;
+      border-radius: $border-radius;
+      padding: $g-sm $g-md;
+      min-width: 200px;
     }
   }
 }

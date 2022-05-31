@@ -23,15 +23,7 @@ export default function Home() {
         to jackgeorge.xyz.
       </h3>
       {clients.map((client, i) => (
-        <div
-          className={
-            i + 1 === clients.length && clients.length > 3
-              ? "site center last"
-              : "site center"
-          }
-        >
-          <Button client={client}/>
-        </div>
+        <Button client={client} i={i}/>
       ))}
     </div>
   );

@@ -19,10 +19,17 @@ export default function Button({ client, i }) {
             : "front pink"
         }
       >
-        <Link to={`/${client.link}`}>
-          <img src={client.img} alt={`${client.text} favicon`} />
-          <h3>{client.text}</h3>
-        </Link>
+        {client.link ? (
+          <Link to={`/${client.link}`}>
+            <img src={client.img} alt={`${client.text} favicon`} />
+            <h3>{client.text}</h3>
+          </Link>
+        ) : (
+          <span className="fake-anchor">
+            <img src={client.img} alt={`${client.text} favicon`} />
+            <h3>{client.text}</h3>
+          </span>
+        )}
       </button>
     </div>
   );
