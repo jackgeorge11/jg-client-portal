@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import Home from "./Home";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { ClientContext } from "./ClientsContext";
+import LogIn from "./LogIn";
+import NotFound from "./NotFound";
 
 function App() {
+  const clients = useContext(ClientContext);
+  console.log(clients)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route exact path="/" element={<Home />} />
+          {clients.map((client, i) => (
+            <Route
+              path={`/${client.link}`}
+              key={i}
+              element={<LogIn client={client} />}
+            />
+          ))}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

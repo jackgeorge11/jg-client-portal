@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap");
+
+$lg: 3rem;
+$md: 1.2rem;
+$sm: 1rem;
+
+$headers: (
+  h1: $lg,
+  h2: $md,
+  h3: $sm,
+);
+
+$weights: 200, 400, 700;
+
+$g-xlg: 2rem;
+$g-lg: 1rem;
+$g-md: 0.75rem;
+$g-sm: 0.5rem;
+$g-xsm: 0.3rem;
+
+$border-radius: 1000px;
+$border-width: 2px;
+
+$trans: all 0.1s ease-in-out;
+
+$muted: #0000003a;
+$blue: #01ffff;
+$yellow: #ffff61;
+$pink: #ff72bb;
+
+body {
+  margin: 0;
+  font-family: "KoHo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  * {
+    transition: $trans;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@each $h, $s in $headers {
+  #{$h} {
+    font-size: $s;
+    font-weight: 400;
+
+    @media (max-width: 550px) {
+      font-size: #{$s * 0.8};
+    }
+  }
+}
+
+@each $w in $weights {
+  .fw-#{$w} {
+    font-weight: $w;
+  }
+}
+
+a {
+  color: black;
+
+  &.muted {
+    color: $muted;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.muted {
+  color: $muted;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: $g-sm;
+
+  h1 {
+    margin: $g-xlg 0 $g-sm;
+  }
+
+  h3 {
+    margin: 0 0 $g-xlg;
+    &.m-0 {
+      margin: 0;
+    }
+  }
+
+  .sites {
+    flex-wrap: wrap;
+    width: 95%;
+    max-width: 800px;
+    margin: $lg;
+    justify-content: space-between;
+
+    .site {
+      flex-direction: column;
+      width: 33.3333333333%;
+      min-width: 100px;
+      margin: $g-md 0 $g-xlg;
+
+      &.last {
+        margin: $g-md auto $g-md 0;
+      }
+
+      button {
+        &.img {
+          width: 75%;
+          max-width: 75%;
+          height: 0;
+          padding-bottom: 75%;
+          position: relative;
+          cursor: pointer;
+        }
+        img {
+          position: absolute;
+          object-fit: contain;
+          width: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  .button-wrapper {
+    position: relative;
+    button {
+      border-radius: $border-radius;
+      outline: none;
+      border: solid black $border-width;
+      margin: $g-sm $g-xsm $g-sm 0;
+      font-family: "KoHo", sans-serif;
+      cursor: pointer;
+      background-color: white;
+      z-index: 1000;
+      transition: $trans;
+
+      &.front {
+        &.blue {
+          &:hover {
+            background-color: $blue;
+          }
+        }
+        &.yellow {
+          &:hover {
+            background-color: $yellow;
+          }
+        }
+        &.pink {
+          &:hover {
+            background-color: $pink;
+          }
+        }
+      }
+
+      &.back {
+        color: black;
+        background-color: black;
+        position: absolute;
+        left: $g-xsm;
+        top: $g-xsm;
+        z-index: -100;
+      }
+
+      a,
+      .fake-anchor {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: $g-xsm $g-sm;
+
+        img {
+          max-height: $md;
+          margin: 0 $g-sm 0 0;
+        }
+
+        h2,
+        h3 {
+          font-weight: 700;
+          margin: 0 0 0.1rem;
+        }
+      }
+    }
+  }
+}
+
+form {
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    h3 {
+      margin: 0;
+    }
+  }
+}
