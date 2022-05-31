@@ -4,12 +4,14 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ClientContext } from "./ClientsContext";
 import LogIn from "./LogIn";
 import NotFound from "./NotFound";
+import Banner from "./Banner";
 
 function App() {
   const clients = useContext(ClientContext);
   console.log(clients)
   return (
     <div className="app">
+      <Banner/>
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NotFound />} />

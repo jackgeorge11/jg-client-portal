@@ -26,9 +26,9 @@ $border-width: 2px;
 $trans: all 0.1s ease-in-out;
 
 $muted: #00000044;
-$blue: #01ffff;
-$yellow: #ffff61;
-$pink: #ff72bb;
+$blue: #a7ffff;
+$yellow: #ffffa7;
+$pink: #ffa7d4;
 
 body {
   margin: 0;
@@ -86,6 +86,11 @@ a {
 
 .muted {
   color: $muted;
+}
+
+.app {
+  position: relative;
+  width: 100%;
 }
 
 .home {
@@ -242,3 +247,35 @@ form {
     }
   }
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+
+.banner {
+  position: absolute;
+  transform-origin: 0% 0%;
+  left: $md;
+  top: 0%;
+  transform: rotate(90deg);
+  width: 100vh;
+  height: $md;
+  content: "";
+  background-image: linear-gradient(to right, $blue, $yellow, $pink, $blue, $yellow, $pink);
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+

@@ -12,7 +12,7 @@ export default function Button({ client, i }) {
       </button>
       <button
         className={
-          i % 3 === 2
+          i % 3 === 0
             ? "front blue"
             : i % 3 === 1
             ? "front yellow"
